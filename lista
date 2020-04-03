@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Cauda {
+
+  int novaCauda;
+  struct Cauda *prox;
+
+};
+
+int main() {
+  
+  struct Cauda *prim;
+  struct Cauda *aux;
+  struct Cauda *ult;
+
+  prim = (struct Cauda*)malloc(sizeof(struct Cauda*));
+  prim->novaCauda = 0;
+  prim->prox = NULL;
+  ult = prim;
+
+  for (int i = 1; i < 50; i++) {
+    aux = (struct Cauda*)malloc(sizeof(struct Cauda*));
+    ult->prox = aux;
+    aux->prox = NULL;
+    aux->novaCauda = i;
+    ult = aux;
+  }
+
+
+  return 0;
+}
